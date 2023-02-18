@@ -22,6 +22,25 @@ class MSCXFile:
 
         return tagValue
 
+    def getTagValue(self, tagname: str) -> str:
+        tagValue = ""
+
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+
+            for line in lines:
+                if line.find(f"{tagname}") != -1:
+                    i = line.find(f"<{tagname}>") + len(f"<{tagname}>")
+                    while line[i] != "<":
+                        tagValue += line[i]
+                        i += 1
+                    break
+        except Exception as e:
+            print("No value found", f"\r {e}")
+
+        return tagValue
+
     def getTitle(self) -> str:
         title = ""
 
@@ -64,6 +83,7 @@ class MSCXFile:
 """
 print(MSCXFile("../out/help/test.mscx").getTitle())
 print(MSCXFile("../out/help/test.mscx").getComposer())
+print(MSCXFile("../out/help/test.mscx").getTagValue("longName"))
 print(MSCXFile("../out/help/test.mscx").getTagValueByName("creationDate"))
 print(MSCXFile("../out/help/test.mscx").getTagValueByName("composer"))
 """
