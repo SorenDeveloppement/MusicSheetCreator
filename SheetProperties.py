@@ -7,9 +7,9 @@ class SheetProperties(Enum):
     """
 
     # Privates variables
-    __sharp = []
-    __flat = []
-    __natural = []
+    __sharp = ["Fa", "Do", "Sol", "Re", "La", "Mi", "Si"]
+    __flat = ["Si", "Mi", "La", "Re", "Sol", "Do", "Fa"]
+    # __natural = []
 
     # The keys
     TREBLE_KEY = 0
