@@ -41,9 +41,29 @@ class MSCXFile:
 
         return title
 
+    def getComposer(self) -> str:
+        composer = ""
+
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+
+            for line in lines:
+                if line.find("composer") != -1:
+                    i = line.find("name=\"composer\">") + len("name=\"composer\">")
+                    while line[i] != "<":
+                        composer += line[i]
+                        i += 1
+                    break
+        except Exception as e:
+            print("No value found", f"\r {e}")
+
+        return composer
+
 
 """
 print(MSCXFile("../out/help/test.mscx").getTitle())
+print(MSCXFile("../out/help/test.mscx").getComposer())
 print(MSCXFile("../out/help/test.mscx").getTagValueByName("creationDate"))
 print(MSCXFile("../out/help/test.mscx").getTagValueByName("composer"))
 """
