@@ -189,5 +189,4 @@ class MSCXFile:
             print(e)
 
 
-MSCXFile("../out/help/test.mscx").setTagValue("<metaTag name=\"composer\">", "Soren")
-print(MSCXFile("out.mscx").getComposer())
+# MSCXFile("../out/help/test.mscx").setTagValue("<metaTag name=\"composer\">", "Test")
