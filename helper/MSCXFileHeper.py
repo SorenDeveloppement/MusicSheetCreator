@@ -44,6 +44,30 @@ class MSCXFile:
 
         return tagValue
 
+    def setTagValue(self, tag: str, value: int | str):
+        out_file = []
+
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+
+            for line in lines:
+                if line.find(f"{tag}") != -1:
+                    i = line.find(f"{tag}") + len(f"{tag}")
+                    if len(line.split("><")) == 2:
+                        out_file.append(line.split("><")[0] + f">{value}<" + line.split("><")[1])
+                    else:
+                        out_file.append(line.split("\">")[0] + f"\">{value}</" + line.split("</")[1])
+                else:
+                    out_file.append(line)
+
+            with open('out.mscx', 'w') as f:
+                f.writelines(out_file)
+                f.close()
+
+        except Exception as e:
+            print(e)
+
     def getTitle(self) -> str:
         title = ""
 
@@ -163,3 +187,7 @@ class MSCXFile:
 
         except Exception as e:
             print(e)
+
+
+MSCXFile("../out/help/test.mscx").setTagValue("<metaTag name=\"composer\">", "Soren")
+print(MSCXFile("out.mscx").getComposer())
