@@ -1,4 +1,3 @@
-
 class MSCXFile:
     def __init__(self, path: str):
         self.path = path
@@ -17,6 +16,8 @@ class MSCXFile:
                         tagValue += line[i]
                         i += 1
                     break
+
+            file.close()
         except Exception as e:
             print("No value found", f"\r {e}")
 
@@ -36,6 +37,8 @@ class MSCXFile:
                         tagValue += line[i]
                         i += 1
                     break
+
+            file.close()
         except Exception as e:
             print("No value found", f"\r {e}")
 
@@ -55,6 +58,8 @@ class MSCXFile:
                         title += line[i]
                         i += 1
                     break
+
+            file.close()
         except Exception as e:
             print("No value found", f"\r {e}")
 
@@ -74,16 +79,87 @@ class MSCXFile:
                         composer += line[i]
                         i += 1
                     break
+
+            file.close()
         except Exception as e:
             print("No value found", f"\r {e}")
 
         return composer
 
+    def getMeasureCount(self) -> int:
+        count = 0
 
-"""
-print(MSCXFile("../out/help/test.mscx").getTitle())
-print(MSCXFile("../out/help/test.mscx").getComposer())
-print(MSCXFile("../out/help/test.mscx").getTagValue("longName"))
-print(MSCXFile("../out/help/test.mscx").getTagValueByName("creationDate"))
-print(MSCXFile("../out/help/test.mscx").getTagValueByName("composer"))
-"""
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+
+            for line in lines:
+                if line.find("<Measure>") != -1:
+                    count += 1
+
+            file.close()
+        except Exception as e:
+            print("No measure in your partition", f"\r{e}")
+
+        return count
+
+    def addMeasure(self, count: int, duration: str = "4/4"):
+        xml = f"\t<Measure>\r\t\t<voice>\r\t\t\t<Rest>\r\t\t\t\t<durationType>measure</durationType>\r\t\t\t\t\t<duration>{duration}</duration>\r\t\t\t\t</Rest>\r\t\t\t</voice>\r\t\t</Measure>\r"
+        out_file = []
+
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+
+            li = 0
+            for line in lines:
+                out_file.append(line)
+                li += 1
+                if li + 1 >= len(lines):
+                    continue
+                else:
+                    if (lines[li].find("</Staff>") != -1) & (lines[li - 1].find("</Measure>") != -1):
+                        for i in range(count):
+                            out_file.append(xml)
+
+            with open('out.mscx', 'w') as f:
+                f.writelines(out_file)
+                f.close()
+
+        except Exception as e:
+            print(e)
+
+    def removeMeasure(self, count: int):
+        out_file = []
+        found = False
+
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+
+            c = 1
+            m_found = 0
+            li = 0
+            for line in lines:
+                if line.find("<Measure>") != -1:
+                    m_found += 1
+                    if self.getMeasureCount() - m_found <= count:
+                        if c <= count:
+                            found = True
+                        else:
+                            found = False
+                        c += 1
+
+                if found:
+                    pass
+                else:
+                    out_file.append(line)
+
+                li += 1
+
+            with open('out.mscx', 'w') as f:
+                f.writelines(out_file)
+                f.close()
+
+        except Exception as e:
+            print(e)
