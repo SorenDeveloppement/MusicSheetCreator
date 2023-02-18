@@ -2,7 +2,7 @@ import SheetProperties
 
 
 class SheetCreator:
-    def __init__(self, title: str, subtitle: str | None, author: str | None, instrument: SheetProperties | str | None, speed: int, key: SheetProperties, signature_nb: int, signature_type: SheetProperties):
+    def __init__(self, title: str, subtitle: str | None, author: str | None, instrument: SheetProperties | str | None, speed: int, key: SheetProperties, signature_nb: int, signature_type: SheetProperties, measure_nb: int):
         self.title = title
         self.subtitle = subtitle
         self.author = author
@@ -11,3 +11,4 @@ class SheetCreator:
         self.key = key
         self.signature_nb = signature_nb
         self.signature_type = signature_type
+        self.measure_nb = measure_nb
