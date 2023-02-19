@@ -318,13 +318,9 @@
         </Measure>
       <Measure>
         <voice>
-          <TimeSig>
-            <sigN>3</sigN>
-            <sigD>4</sigD>
-            </TimeSig>
           <Rest>
             <durationType>measure</durationType>
-            <duration>3/4</duration>
+            <duration>4/4</duration>
             </Rest>
           </voice>
         </Measure>
@@ -332,7 +328,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>3/4</duration>
+            <duration>4/4</duration>
             </Rest>
           </voice>
         </Measure>
@@ -340,15 +336,7 @@
         <voice>
           <Rest>
             <durationType>measure</durationType>
-            <duration>3/4</duration>
-            </Rest>
-          </voice>
-        </Measure>
-      <Measure>
-        <voice>
-          <Rest>
-            <durationType>measure</durationType>
-            <duration>3/4</duration>
+            <duration>4/4</duration>
             </Rest>
           </voice>
         </Measure>

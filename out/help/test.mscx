@@ -189,9 +189,53 @@
           <subtype>line</subtype>
           </LayoutBreak>
         <voice>
+          <Chord>
+            <durationType>16th</durationType>
+            <Note>
+              <pitch>69</pitch>
+              <tpc>17</tpc>
+              </Note>
+            </Chord>
+          <Chord>
+            <durationType>16th</durationType>
+            <Note>
+              <pitch>69</pitch>
+              <tpc>17</tpc>
+              </Note>
+            </Chord>
+          <Chord>
+            <durationType>32nd</durationType>
+            <Note>
+              <pitch>71</pitch>
+              <tpc>19</tpc>
+              </Note>
+            </Chord>
+          <Chord>
+            <durationType>32nd</durationType>
+            <Note>
+              <pitch>71</pitch>
+              <tpc>19</tpc>
+              </Note>
+            </Chord>
+          <Chord>
+            <durationType>32nd</durationType>
+            <Note>
+              <pitch>71</pitch>
+              <tpc>19</tpc>
+              </Note>
+            </Chord>
+          <Chord>
+            <durationType>32nd</durationType>
+            <Note>
+              <pitch>71</pitch>
+              <tpc>19</tpc>
+              </Note>
+            </Chord>
           <Rest>
-            <durationType>measure</durationType>
-            <duration>4/4</duration>
+            <durationType>quarter</durationType>
+            </Rest>
+          <Rest>
+            <durationType>half</durationType>
             </Rest>
           </voice>
         </Measure>
