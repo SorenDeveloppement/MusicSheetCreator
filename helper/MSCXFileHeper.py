@@ -141,6 +141,23 @@ class MSCXFile:
 
         return count
 
+    def getNoteCount(self) -> int:
+        count = 0
+
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+
+            for line in lines:
+                if line.find("<Note>") != -1:
+                    count += 1
+
+            file.close()
+        except Exception as e:
+            print("No note in your partition", f"\r{e}")
+
+        return count
+
     def addMeasure(self, count: int, duration: str = "4/4"):
         xml = f"\t<Measure>\r\t\t<voice>\r\t\t\t<Rest>\r\t\t\t\t<durationType>measure</durationType>\r\t\t\t\t\t<duration>{duration}</duration>\r\t\t\t\t</Rest>\r\t\t\t</voice>\r\t\t</Measure>\r"
         out_file = []
@@ -292,7 +309,6 @@ class MSCXFile:
         except Exception as e:
             print(e)
 
-
     def verifyMeasureNoteCount(self, measure: int):
         try:
             file = open(self.path, 'r')
@@ -326,8 +342,3 @@ class MSCXFile:
 
         except Exception as e:
             print(e)
-
-
-MSCXFile("../out/help/test.mscx").addNotes([NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], [NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], measure=5)
-MSCXFile("out.mscx").addNotes([NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], [NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], measure=6)
-MSCXFile("out.mscx").addNotes([NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], [NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], measure=7)
