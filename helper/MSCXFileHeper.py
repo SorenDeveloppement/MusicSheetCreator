@@ -222,24 +222,9 @@ class MSCXFile:
                     print(m_found)
                 if m_found == measure:
                     print("1 - OK")
-                    if line.find("<voice>") != -1:
-                        out_file.append(xml)
-
-                    """
-                    if line.find("<voice>") != -1:
+                    if lines[li+1].find("</voice>") != -1:
                         print("2 - OK")
-                        if lines[li+1].find("<Chord>") != -1:
-                            f2 = True
-                            print(f)
-                    if line.find("</Chord>") != 1:
-                        f2 = False
-                        print(f)
-
-                    if f:
-                        pass
-                    else:
                         out_file.append(xml)
-                    """
 
                 li += 1
 
@@ -249,8 +234,3 @@ class MSCXFile:
 
         except Exception as e:
             print(e)
-
-
-# MSCXFile("../out/help/test.mscx").setTagValue("<metaTag name=\"composer\">", "Test")
-MSCXFile("../out/help/test.mscx").addNote(NoteProperties.DO, NoteProperties.QUARTER, 10)
-MSCXFile("out.mscx").addNote(NoteProperties.RE, NoteProperties.QUARTER, 10)
