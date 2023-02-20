@@ -47,6 +47,17 @@ class MSCXFile:
 
         return tagValue
 
+    @staticmethod
+    def getValue(self, tag: str) -> str:
+        tagValue = ""
+
+        i = tag.find(">") + 1
+        while tag[i] != "<":
+            tagValue += tag[i]
+            i += 1
+
+        return tagValue
+
     def setTagValue(self, tag: str, value: int | str):
         out_file = []
 
@@ -213,18 +224,17 @@ class MSCXFile:
                         f = False
 
                 if f:
-                    ...
+                    pass
                 else:
                     out_file.append(line)
 
                 if line.find("<Measure>") != -1:
                     m_found += 1
-                    print(m_found)
                 if m_found == measure:
-                    print("1 - OK")
-                    if lines[li+1].find("</voice>") != -1:
-                        print("2 - OK")
-                        out_file.append(xml)
+                    if not li + 1 == len(lines):
+                        if lines[li + 1].find("</voice>") != -1:
+                            print("2 - OK")
+                            out_file.append(xml)
 
                 li += 1
 
@@ -232,5 +242,92 @@ class MSCXFile:
                 f.writelines(out_file)
                 f.close()
 
+            self.verifyMeasureNoteCount(measure)
+
         except Exception as e:
             print(e)
+
+    def addNotes(self, *args: [NoteProperties, NoteProperties], measure: int):
+        out_file = []
+        f = False
+        f2 = False
+        li = 0
+
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+
+            m_found = 0
+            for line in lines:
+
+                if line.find("<Rest>") != -1:
+                    if m_found == measure:
+                        f = True
+                if line.find("</voice>") != -1:
+                    if m_found == measure:
+                        f = False
+
+                if f:
+                    pass
+                else:
+                    out_file.append(line)
+
+                if line.find("<Measure>") != -1:
+                    m_found += 1
+                if m_found == measure:
+                    if not li + 1 == len(lines):
+                        if lines[li + 1].find("</voice>") != -1:
+                            for note in args:
+                                xml = f"\t\t  <Chord>\r\t\t\t<durationType>{note[1]}</durationType>\r\t\t\t  <Note>\r\t\t\t\t<pitch>{note[0][1]}</pitch>\r\t\t\t\t<tpc>{note[0][2]}</tpc>\r\t\t\t  </Note>\r\t\t\t</Chord>\r"
+                                out_file.append(xml)
+
+                li += 1
+
+            with open('out.mscx', 'w') as f:
+                f.writelines(out_file)
+                f.close()
+
+            self.verifyMeasureNoteCount(measure)
+
+        except Exception as e:
+            print(e)
+
+
+    def verifyMeasureNoteCount(self, measure: int):
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+            timeSignature = int(self.getTagValue("sigN"))
+            timefound = 0
+
+            m_found = 0
+
+            for line in lines:
+                if line.find("<Measure>") != -1:
+                    m_found += 1
+
+                if m_found == measure:
+                    if line.find("<durationType>") != -1:
+                        if self.getValue(self, line) == "32nd":
+                            timefound += 1/8
+                        elif self.getValue(self, line) == "16th":
+                            timefound += 1/4
+                        elif self.getValue(self, line) == "heighth":
+                            timefound += 1/2
+                        elif self.getValue(self, line) == "quarter":
+                            timefound += 1
+                        elif self.getValue(self, line) == "half":
+                            timefound += 2
+                        elif self.getValue(self, line) == "whole":
+                            timefound += 4
+
+            if timefound > timeSignature:
+                print(f"\033[91m Too many time in measure {measure} ! Found {timefound} instead {timeSignature}.\033[00m")
+
+        except Exception as e:
+            print(e)
+
+
+MSCXFile("../out/help/test.mscx").addNotes([NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], [NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], measure=5)
+MSCXFile("out.mscx").addNotes([NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], [NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], measure=6)
+MSCXFile("out.mscx").addNotes([NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], [NoteProperties.DO, NoteProperties.QUARTER], [NoteProperties.RE, NoteProperties.QUARTER], measure=7)
