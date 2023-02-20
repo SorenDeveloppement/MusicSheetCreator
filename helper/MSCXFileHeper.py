@@ -195,6 +195,7 @@ class MSCXFile:
         xml = f"\t\t  <Chord>\r\t\t\t<durationType>{duration}</durationType>\r\t\t\t  <Note>\r\t\t\t\t<pitch>{note[1]}</pitch>\r\t\t\t\t<tpc>{note[2]}</tpc>\r\t\t\t  </Note>\r\t\t\t</Chord>\r"
         out_file = []
         f = False
+        f2 = False
         li = 0
 
         try:
@@ -204,32 +205,41 @@ class MSCXFile:
             m_found = 0
             for line in lines:
 
-                """if line.find("<Rest>") != -1:
+                if line.find("<Rest>") != -1:
                     if m_found == measure:
                         f = True
-                elif line.find("</Rest>") != -1:
+                if line.find("</voice>") != -1:
                     if m_found == measure:
                         f = False
 
                 if f:
                     ...
                 else:
-                    if m_found == measure:
-                        if lines[li].find("</Rest>") != -1:
-                            ...
-                    else:
-                        out_file.append(line)"""
-
-                out_file.append(line)
+                    out_file.append(line)
 
                 if line.find("<Measure>") != -1:
                     m_found += 1
                     print(m_found)
-                if line.find("<voice>") != -1:
+                if m_found == measure:
                     print("1 - OK")
-                    if m_found == measure:
-                        print("2 - OK")
+                    if line.find("<voice>") != -1:
                         out_file.append(xml)
+
+                    """
+                    if line.find("<voice>") != -1:
+                        print("2 - OK")
+                        if lines[li+1].find("<Chord>") != -1:
+                            f2 = True
+                            print(f)
+                    if line.find("</Chord>") != 1:
+                        f2 = False
+                        print(f)
+
+                    if f:
+                        pass
+                    else:
+                        out_file.append(xml)
+                    """
 
                 li += 1
 
@@ -242,4 +252,5 @@ class MSCXFile:
 
 
 # MSCXFile("../out/help/test.mscx").setTagValue("<metaTag name=\"composer\">", "Test")
-MSCXFile("../out/help/test.mscx").addNote(NoteProperties.DO, NoteProperties.HALF, 10)
+MSCXFile("../out/help/test.mscx").addNote(NoteProperties.DO, NoteProperties.QUARTER, 10)
+MSCXFile("out.mscx").addNote(NoteProperties.RE, NoteProperties.QUARTER, 10)

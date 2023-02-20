@@ -284,10 +284,13 @@
         </Measure>
       <Measure>
         <voice>
-		  <Chord>			<durationType>half</durationType>			  <Note>				<pitch>60</pitch>				<tpc>14</tpc>			  </Note>			</Chord>          <Rest>
-            <durationType>measure</durationType>
-            <duration>4/4</duration>
-            </Rest>
+		  <Chord>			<durationType>quarter</durationType>			  <Note>				<pitch>62</pitch>				<tpc>16</tpc>			  </Note>			</Chord>		  <Chord>
+			<durationType>quarter</durationType>
+			  <Note>
+				<pitch>60</pitch>
+				<tpc>14</tpc>
+			  </Note>
+			</Chord>
           </voice>
         </Measure>
       <Measure>

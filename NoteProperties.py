@@ -1,6 +1,6 @@
 # Notes [name, pitch, tpc]
 DO = ["Do", 60, 14]
-RE = ["Re", 0, 0]
+RE = ["Re", 62, 16]
 MI = ["Mi", 0, 0]
 FA = ["Fa", 0, 0]
 SOL = ["Sol", 0, 0]
