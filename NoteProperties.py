@@ -1,29 +1,26 @@
-from enum import Enum
+# Notes [name, pitch, tpc]
+DO = ["Do", 60, 14]
+RE = ["Re", 62, 16]
+MI = ["Mi", 0, 0]
+FA = ["Fa", 0, 0]
+SOL = ["Sol", 0, 0]
+LA = ["La", 0, 0]
+SI = ["Si", 0, 0]
+REST = "rest"
 
+"""
+Enumeration class that aims to help making notes and which gives preset parameters
+"""
 
-class NoteProperties(Enum):
-    """
-    Enumeration class that aims to help making notes and which gives preset parameters
-    """
+# Notes type  --->  [Name] = [Duration]
+WHOLE = "whole"
+HALF = "half"
+QUARTER = "quarter"
+HEIGHTH = "heighth"
+SIXTEENTH = "16th"
+THIRTY_SECOND = "32nd"
 
-    # Notes type  --->  [Name] = [Duration]
-    WHOLE = 4
-    HALF = 2
-    QUARTER = 1
-    HEIGHTH = 1/2
-    SIXTEENTH = 1/4
-    THIRTY_SECOND = 1/8
-
-    # Notes name
-    DO = "Do"
-    RE = "Re"
-    MI = "Mi"
-    FA = "Fa"
-    SOL = "Sol"
-    LA = "La"
-    SI = "Si"
-
-    # Note level
-    BASS = -1
-    MEDIUM = 0
-    HIGHT = 1
+# Note level
+BASS = -1
+MEDIUM = 0
+HIGHT = 1
