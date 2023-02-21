@@ -109,11 +109,6 @@
             <sigN>4</sigN>
             <sigD>4</sigD>
             </TimeSig>
-          <Tempo>
-            <tempo>1.33333</tempo>
-            <followText>1</followText>
-            <text><sym>metNoteQuarterUp</sym> = 80</text>
-            </Tempo>
           <Rest>
             <durationType>measure</durationType>
             <duration>4/4</duration>

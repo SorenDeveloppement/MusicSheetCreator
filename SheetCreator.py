@@ -9,9 +9,9 @@ class SheetCreator:
                  path: str, musescore_version: int):
         self.title = title
         self.composer = composer
-        self.instrument = instrument
-        self.tempo = tempo
-        self.clef = clef
+        self.instrument = instrument  # TODO
+        self.tempo = tempo  # TODO
+        self.clef = clef  # TODO
         self.signature_nb = signature_nb
         self.signature_type = signature_type
         self.measure_nb = measure_nb
