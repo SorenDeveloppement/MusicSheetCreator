@@ -18,6 +18,7 @@ class SheetCreator:
 
     def setPartitionTitle(self, title: str):
         self.file.setTagValue("<metaTag name=\"workTitle\">", title)
+        # modify
 
     def setPartitionComposer(self, composer: str):
         self.file.setTagValue("<metaTag name=\"workTitle\">", composer)
