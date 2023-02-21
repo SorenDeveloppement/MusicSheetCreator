@@ -48,7 +48,7 @@ class MSCXFile:
         return tagValue
 
     @staticmethod
-    def getValue(self, tag: str) -> str:
+    def getValue(tag: str) -> str:
         tagValue = ""
 
         i = tag.find(">") + 1

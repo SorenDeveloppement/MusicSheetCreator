@@ -12,8 +12,8 @@ class SheetProperties(Enum):
     # __natural = []
 
     # The keys
-    TREBLE_KEY = 0
-    BASS_KEY = 1
+    TREBLE_CLEF = 0
+    BASS_CLEF = 1
 
     # The accidentals
     SHARP = "#"
