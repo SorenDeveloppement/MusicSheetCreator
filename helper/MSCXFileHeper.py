@@ -295,8 +295,12 @@ class MSCXFile:
                     if not li + 1 == len(lines):
                         if lines[li + 1].find("</voice>") != -1:
                             for note in args:
-                                xml = f"\t\t  <Chord>\r\t\t\t<durationType>{note[1]}</durationType>\r\t\t\t  <Note>\r\t\t\t\t<pitch>{note[0][1]}</pitch>\r\t\t\t\t<tpc>{note[0][2]}</tpc>\r\t\t\t  </Note>\r\t\t\t</Chord>\r"
-                                out_file.append(xml)
+                                if note[0] == NoteProperties.REST:
+                                    xml = f"\t\t  <Rest>\r\t\t\t<durationType>{note[1]}</durationType>\r\t\t\t</Rest>\r"
+                                    out_file.append(xml)
+                                else:
+                                    xml = f"\t\t  <Chord>\r\t\t\t<durationType>{note[1]}</durationType>\r\t\t\t  <Note>\r\t\t\t\t<pitch>{note[0][1]}</pitch>\r\t\t\t\t<tpc>{note[0][2]}</tpc>\r\t\t\t  </Note>\r\t\t\t</Chord>\r"
+                                    out_file.append(xml)
 
                 li += 1
 
@@ -338,7 +342,7 @@ class MSCXFile:
                             timefound += 4
 
             if timefound > timeSignature:
-                print(f"\033[91m Too many time in measure {measure} ! Found {timefound} instead {timeSignature}.\033[00m")
+                print(f"\033[91m Too many time in measure {measure} ! Found {timefound:.2f} instead {timeSignature}.\033[00m")
 
         except Exception as e:
             print(e)

@@ -6,6 +6,7 @@ FA = ["Fa", 0, 0]
 SOL = ["Sol", 0, 0]
 LA = ["La", 0, 0]
 SI = ["Si", 0, 0]
+REST = "rest"
 
 """
 Enumeration class that aims to help making notes and which gives preset parameters

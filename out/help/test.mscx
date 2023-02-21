@@ -133,16 +133,9 @@
               <tpc>16</tpc>
               </Note>
             </Chord>
-          <Chord>
+          <Rest>
             <durationType>quarter</durationType>
-            <Note>
-              <Accidental>
-                <subtype>accidentalSharp</subtype>
-                </Accidental>
-              <pitch>63</pitch>
-              <tpc>23</tpc>
-              </Note>
-            </Chord>
+            </Rest>
           <Chord>
             <durationType>quarter</durationType>
             <Note>
