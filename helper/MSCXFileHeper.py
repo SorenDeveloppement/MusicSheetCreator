@@ -213,6 +213,31 @@ class MSCXFile:
 
         return tempo
 
+    def setTempo(self, tempo: int):
+        tagValue = ""
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+            li = 0
+            out_file = []
+
+            for line in lines:
+                if line.find("tempo") != -1 and lines[li - 1].find("<Tempo>") != -1:
+                    out_file.append(f"\t\t\t<tempo>{tempo/60:.5f}</tempo>\r")
+                elif line.find("text") != -1 and lines[li + 1].find("</Tempo>") != -1:
+                    out_file.append(f"\t\t\t<text><sym>metNoteQuarterUp</sym> = {tempo}</text>\r")
+                else:
+                    out_file.append(line)
+                li += 1
+
+            with open('out.mscx', 'w') as f:
+                f.writelines(out_file)
+                f.close()
+
+        except Exception as e:
+            print("No value found", f"\r {e}")
+
+
     def addMeasure(self, count: int, duration: str = "4/4"):
         xml = f"\t<Measure>\r\t\t<voice>\r\t\t\t<Rest>\r\t\t\t\t<durationType>measure</durationType>\r\t\t\t\t\t<duration>{duration}</duration>\r\t\t\t\t</Rest>\r\t\t\t</voice>\r\t\t</Measure>\r"
         out_file = []
@@ -404,4 +429,5 @@ class MSCXFile:
             print(e)
 
 
-print(MSCXFile("out.mscx").getTempo())
+"""print(MSCXFile("out.mscx").getTempo())
+MSCXFile("out.mscx").setTempo(90)"""

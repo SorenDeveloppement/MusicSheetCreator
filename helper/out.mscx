@@ -110,230 +110,260 @@
             <sigD>4</sigD>
             </TimeSig>
           <Tempo>
-            <tempo>1.33333</tempo>
-            <followText>1</followText>
-            <text><sym>metNoteQuarterUp</sym> = 80</text>
-            </Tempo>
+			<tempo>1.50000</tempo>            <followText>1</followText>
+			<text><sym>metNoteQuarterUp</sym> = 90</text>            </Tempo>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       <Measure>
         <voice>
           <Rest>
             <durationType>measure</durationType>
-			<duration>3/4</duration>            </Rest>
+			<duration>3/4</duration>
+            </Rest>
           </voice>
         </Measure>
       </Staff>

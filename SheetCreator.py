@@ -11,7 +11,7 @@ class SheetCreator:
         self.title = title
         self.composer = composer
         self.instrument = instrument        # TODO          Getter : NO  |  Setter : NO
-        self.tempo = tempo                  # TODO          Getter : YES  |  Setter : NO
+        self.tempo = tempo                  # TODO          Getter : YES  |  Setter : YES
         self.clef = clef                    # TODO          Getter : NO  |  Setter : NO
         self.signature_nb = signature_nb
         self.signature_type = signature_type
