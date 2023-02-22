@@ -67,11 +67,10 @@ class MSCXFile:
 
             for line in lines:
                 if line.find(f"{tag}") != -1:
-                    i = line.find(f"{tag}") + len(f"{tag}")
                     if len(line.split("><")) == 2:
                         out_file.append(line.split("><")[0] + f">{value}<" + line.split("><")[1])
                     else:
-                        out_file.append(line.split("\">")[0] + f"\">{value}</" + line.split("</")[1])
+                        out_file.append(line.split(">")[0] + f">{value}</" + line.split("</")[1])
                 else:
                     out_file.append(line)
 
@@ -157,6 +156,62 @@ class MSCXFile:
             print("No note in your partition", f"\r{e}")
 
         return count
+
+    def getTimeSignature(self) -> str:
+        return self.getTagValue("sigN") + '/' + self.getTagValue("sigD")
+
+    def setTimeSignature(self, sig: str):
+        time_sig = sig.split('/')
+        self.setTagValue("sigN", time_sig[0])
+        self.setTagValue("sigD", time_sig[1])
+        out_file = []
+
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+
+            for line in lines:
+                if line.find("duration") != -1 and line.find("durationType") == -1:
+                    if not self.getTagValue("duration") == sig:
+                        print(line)
+                        out_file.append(f"\t\t\t<duration>{sig}</duration>\r")
+                else:
+                    out_file.append(line)
+
+            with open('out.mscx', 'w') as f:
+                f.writelines(out_file)
+                f.close()
+
+        except Exception as e:
+            print(e)
+
+    def getTempo(self) -> str:
+        tempo = ""
+
+        tagValue = ""
+        try:
+            file = open(self.path, 'r')
+            lines = file.readlines()
+            li = 0
+
+            for line in lines:
+                if line.find("text") != -1 and lines[li + 1].find("</Tempo>") != -1:
+                    i = line.find("<text>") + len("<text>")
+                    while line.find("</text>") != i:
+                        tagValue += line[i]
+                        i += 1
+                    break
+                li += 1
+
+            file.close()
+        except Exception as e:
+            print("No value found", f"\r {e}")
+
+        for i in tagValue:
+            if i.isdigit():
+                tempo += i
+
+        return tempo
 
     def addMeasure(self, count: int, duration: str = "4/4"):
         xml = f"\t<Measure>\r\t\t<voice>\r\t\t\t<Rest>\r\t\t\t\t<durationType>measure</durationType>\r\t\t\t\t\t<duration>{duration}</duration>\r\t\t\t\t</Rest>\r\t\t\t</voice>\r\t\t</Measure>\r"
@@ -329,11 +384,11 @@ class MSCXFile:
                 if m_found == measure:
                     if line.find("<durationType>") != -1:
                         if self.getValue(self, line) == "32nd":
-                            timefound += 1/8
+                            timefound += 1 / 8
                         elif self.getValue(self, line) == "16th":
-                            timefound += 1/4
+                            timefound += 1 / 4
                         elif self.getValue(self, line) == "heighth":
-                            timefound += 1/2
+                            timefound += 1 / 2
                         elif self.getValue(self, line) == "quarter":
                             timefound += 1
                         elif self.getValue(self, line) == "half":
@@ -342,7 +397,11 @@ class MSCXFile:
                             timefound += 4
 
             if timefound > timeSignature:
-                print(f"\033[91m Too many time in measure {measure} ! Found {timefound:.2f} instead {timeSignature}.\033[00m")
+                print(
+                    f"\033[91m Too many time in measure {measure} ! Found {timefound:.2f} instead {timeSignature}.\033[00m")
 
         except Exception as e:
             print(e)
+
+
+print(MSCXFile("out.mscx").getTempo())

@@ -1,5 +1,6 @@
 import SheetProperties
 from helper import MSCXFileHeper as msc
+from helper.MSCXFileHeper import MSCXFile
 
 
 class SheetCreator:
@@ -9,9 +10,9 @@ class SheetCreator:
                  path: str, musescore_version: int):
         self.title = title
         self.composer = composer
-        self.instrument = instrument  # TODO
-        self.tempo = tempo  # TODO
-        self.clef = clef  # TODO
+        self.instrument = instrument        # TODO          Getter : NO  |  Setter : NO
+        self.tempo = tempo                  # TODO          Getter : YES  |  Setter : NO
+        self.clef = clef                    # TODO          Getter : NO  |  Setter : NO
         self.signature_nb = signature_nb
         self.signature_type = signature_type
         self.measure_nb = measure_nb
@@ -97,5 +98,17 @@ class SheetCreator:
         else:
             pass
 
+    def setInstrument(self):
+        ...
+
+    def setTempo(self):
+        ...
+
+    def setClef(self):
+        ...
+
     def getPath(self) -> str:
         return self.path
+
+    def getFile(self) -> MSCXFile:
+        return self.file
