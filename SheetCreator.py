@@ -6,15 +6,15 @@ from helper.MSCXFileHeper import MSCXFile
 class SheetCreator:
 
     def __init__(self, title: str, composer: str, instrument: SheetProperties | str | None,
-                 tempo: int, clef: SheetProperties, signature_nb: int, signature_type: SheetProperties, measure_nb: int,
+                 tempo: int, clef: SheetProperties, signature_nb: int, signature_type: SheetProperties | None, measure_nb: int,
                  path: str, musescore_version: int):
         self.title = title
         self.composer = composer
-        self.instrument = instrument        # TODO          Getter : NO  |  Setter : NO
-        self.tempo = tempo                  # TODO          Getter : YES  |  Setter : YES
-        self.clef = clef                    # TODO          Getter : NO  |  Setter : NO
-        self.signature_nb = signature_nb
-        self.signature_type = signature_type
+        self.instrument = instrument            # TODO          Getter : NO  |  Setter : NO
+        self.tempo = tempo                      # TODO          Getter : YES  |  Setter : YES
+        self.clef = clef                        # TODO          Getter : NO  |  Setter : NO
+        self.signature_nb = signature_nb        # TODO          Getter : NO  |  Setter : NO
+        self.signature_type = signature_type    # TODO          Getter : NO  |  Setter : NO
         self.measure_nb = measure_nb
         self.path = path
         self.file = msc.MSCXFile(self.path)
